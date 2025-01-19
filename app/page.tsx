@@ -1,6 +1,5 @@
 import HeadLine from "@/components/headline";
 import Header from "@/components/header";
-import HeroPage from "@/components/HeroPage";
 import Gallery from "@/components/gallery";
 import HeroPage2 from "@/components/heroPage2";
 import Post from "@/components/post";
@@ -8,6 +7,7 @@ import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
+import HeroPage from "@/components/heroPage";
 
 interface IProduct {
   title: string,
@@ -44,7 +44,7 @@ export default async function Home() {
 
       <HeadLine />
       <Header />
-      <HeroPage />
+      <HeroPage/>
       <Gallery />
 
       <div>
