@@ -18,7 +18,7 @@ interface IProduct {
   isNew: boolean,
   imageUrl: string,
   _id: number,
-  slug: {current:string }
+  slug: { current: string }
 }
 export default async function Home() {
   const response = await client.fetch(`*[_type == "product"]{
@@ -99,7 +99,6 @@ export default async function Home() {
           </div>
         </div>
       </div>
-
       <HeroPage2 />
       <Post />
     </div>
