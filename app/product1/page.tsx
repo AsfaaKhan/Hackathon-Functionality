@@ -1,7 +1,7 @@
 import Image from "next/image"
 import HeadLine2 from "@/components/headline2";
 import Header from "@/components/header";
-import BestSeller from "@/components/bestsellerproduct"
+// import BestSeller from "@/components/bestsellerproduct"
 import Link from "next/link"
 import { PiGreaterThanLight } from "react-icons/pi";
 import { Slash } from "lucide-react"
@@ -17,9 +17,47 @@ import {
 
 } from "@/components/ui/breadcrumb"
 import Button from "@/components/button";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 
-export default function Product1() {
+interface IProduct {
+    title: string,
+    price: number,
+    tags: string[],
+    discountPercentage: number,
+    description: string,
+    isNew: boolean,
+    imageUrl: string,
+    _id: number,
+    slug: {current:string }
+  }
+
+  
+interface Props {
+    params: { slug: string };
+  }
+
+export default async function Product1({ params }: Props) {
+
+
+    
+ const { slug } = params;
+
+  const  query=`*[_type == "product" && slug.current == "${slug}"][0]{
+      title,
+      description,
+      price,
+      imageUrl,
+      slug,
+    }`;
+  const product: IProduct  = await client.fetch(query);
+
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
     return (
         <div>
             <HeadLine2 />
@@ -48,15 +86,15 @@ export default function Product1() {
                 <div className="container bg-[#FAFAFA]">
                     <div className=" pb-12 flex gap-[30px] flex-col  md:flex-row ">
                         <div className="md:w-1/2">
-                            <Image src={"/sellerproduct/col-md-6.svg"}
-                                alt="shop"
+                            <Image src={urlFor(product.imageUrl).url()}
+                                alt={product.title}
                                 width={506}
                                 height={450}></Image>
                         </div>
 
                         <div className=" md:w-1/2 flex flex-col gap-[10px]">
                             <div>
-                                <h1 className="text-darkBlue font-bold text-xl leading-[30px] " style={{ letterSpacing: "0.2px" }}>Floating Phone</h1>
+                                <h1 className="text-darkBlue font-bold text-xl leading-[30px] " style={{ letterSpacing: "0.2px" }}>{product.title} </h1>
                             </div>
                             <div className="flex gap-[10px] ">
                                 <Image src={"/sellerproduct/stars.svg"}
@@ -65,19 +103,17 @@ export default function Product1() {
                                     height={20}>
 
                                 </Image>
-                                <p className="text-gray font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2px" }}>10 Reviews</p>
+                                <p className="text-gray font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2px" }}>{product.discountPercentage}% Discount</p>
                             </div>
                             <div>
-                                <h1 className="text-darkBlue font-bold text-xl leading-[32px] " style={{ letterSpacing: "0.1px" }}>$1,139.33</h1>
+                                <h1 className="text-darkBlue font-bold text-xl leading-[32px] " style={{ letterSpacing: "0.1px" }}>${product.price}</h1>
                             </div>
                             <div className="flex gap-[5px]  font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2px" }}>
-                                <h6 className="text-gray">Availability  :</h6>
+                                <h6 className="text-gray">Availability:{product.isNew} </h6>
                                 <h6 className="text-skyblue">In Stock </h6>
                             </div>
                             <div>
-                                <p className="  font-normal text-sm leading-[20px] text-gray " style={{ letterSpacing: "0.2px" }} >Met minim Mollie non desert Alamo est sit cliquey dolor
-                                    do met sent. RELIT official consequent door ENIM RELIT Mollie.
-                                    Excitation venial consequent sent nostrum met.</p>
+                                <p className="  font-normal text-sm leading-[20px] text-gray " style={{ letterSpacing: "0.2px" }} >{product.description}</p>
                             </div>
                             <div className="border   border-gray mt-6
                             mb-6 "></div>
@@ -103,7 +139,6 @@ export default function Product1() {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -143,7 +178,6 @@ export default function Product1() {
                             <p>{`Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.`}
                                 <br />
                                 <br />
-
 
                                 {`Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.`}
                                 <br />
@@ -221,8 +255,8 @@ export default function Product1() {
 
 
                     {/* 3rd Section */}
-                    {/* seller product */}
-                    <BestSeller />
+                    {/* seller product
+                    <BestSeller /> */}
                 </div>
             </div>
 

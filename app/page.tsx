@@ -1,12 +1,13 @@
 import HeadLine from "@/components/headline";
 import Header from "@/components/header";
-import HeroPage from "@/components/heroPage";
+import HeroPage from "@/components/HeroPage";
 import Gallery from "@/components/gallery";
 import HeroPage2 from "@/components/heroPage2";
 import Post from "@/components/post";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
 
 interface IProduct {
   title: string,
@@ -16,7 +17,8 @@ interface IProduct {
   description: string,
   isNew: boolean,
   imageUrl: string,
-  _id: number
+  _id: number,
+  slug: {current:string }
 }
 export default async function Home() {
   const response = await client.fetch(`*[_type == "product"]{
@@ -27,14 +29,15 @@ export default async function Home() {
           description,
           isNew,
           imageUrl,
-          _id
+          _id,
+          slug,
      }`)
 
   const products: IProduct[] = response
-  console.log(products);
+  // console.log(products);
 
-    const newArrivals = products.filter((product) => product.isNew)
-    console.log(newArrivals)
+  const newArrivals = products.filter((product) => product.isNew)
+  // console.log(newArrivals)
   return (
 
     <div>
@@ -59,12 +62,15 @@ export default async function Home() {
               {newArrivals.map((product) => (
                 <div key={product._id} className="flex flex-col items-center text-center border-[1px] rounded-md  shadow-md ">
                   {/* Image */}
+
                   <div className=" flex  flex-col justify-center items-center w-full h-[400px] rounded-sm">
-                    <Image src={urlFor(product.imageUrl).url()}
-                      alt={product.imageUrl}
-                      width={300}
-                      height={300}>
-                    </Image>
+                    <Link href={`/product/${product.slug.current}`}>
+                      <Image src={urlFor(product.imageUrl).url()}
+                        alt={product.imageUrl}
+                        width={300}
+                        height={300}>
+                      </Image>
+                    </Link>
                   </div>
                   {/* Text */}
                   <div className="pt-[25px] pb-[35px] pr-[25px] pl-[25px] gap-[10px] flex flex-col text-center items-center justify-center ">

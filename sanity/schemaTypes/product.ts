@@ -12,6 +12,15 @@ export const product = defineType({
             type: "string"
         },
         {
+            name: 'slug',
+            title: 'Slug',
+            type: 'slug',
+            options: {
+              source: 'title',
+              maxLength: 96,
+            },
+          },
+        {
             name:"description",
             type:"text",
             validation: (rule) => rule.required(),
@@ -44,6 +53,12 @@ export const product = defineType({
             name:"isNew",
             type:"boolean",
             title:"New Badge",
-        }
+        },
+        {
+            name: 'category',
+            title: 'Category',
+            type: 'reference',
+            to: [{ type: 'category' }],
+        },
     ]
 })
