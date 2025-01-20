@@ -7,8 +7,8 @@ import { BiMenuAltRight } from "react-icons/bi"; import { CiHeart } from "react-
 import { FaRegUser } from "react-icons/fa6";
 import { PiShoppingCart } from "react-icons/pi";
 
-import { NavigationMenu, NavigationMenuList ,NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger } from "./ui/navigation-menu"
-
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger } from "./ui/navigation-menu"
+import { useCart } from "@/app/context/CartContext"
 
 
 // FONT INTER
@@ -19,6 +19,8 @@ const inter = Inter({
 
 export default function Header() {
     const [navbar, setNavbar] = useState(false)
+    const { cartItems } = useCart();
+
 
     const handleNavbar = () => {
         setNavbar(!navbar);
@@ -40,13 +42,13 @@ export default function Header() {
                         <NavigationMenu>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <ul className="flex flex-col  w-[400px] gap-3 p-4   ">
-                                        <li><Link className="  hover:underline hover:text-darkBlue  " href={"/productPage"}>Product List Page</Link></li>
-                                        <li><Link className="  hover:underline hover:text-darkBlue  " href={"/product1"}>Product Detail</Link></li>
-                                    </ul>
-                                </NavigationMenuContent>
+                                    <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        <ul className="flex flex-col  w-[400px] gap-3 p-4   ">
+                                            <li><Link className="  hover:underline hover:text-darkBlue  " href={"/productPage"}>Product List Page</Link></li>
+                                            <li><Link className="  hover:underline hover:text-darkBlue  " href={"/product1"}>Product Detail</Link></li>
+                                        </ul>
+                                    </NavigationMenuContent>
                                 </NavigationMenuItem>
                             </NavigationMenuList>
                         </NavigationMenu>
@@ -75,10 +77,15 @@ export default function Header() {
                         </div>
                         {/* btn2 */}
                         <div className=" ">
-                            <button className="text-darkBlue flex  gap-1  rounded-[37px] p-[15px] gp-[5px] lg:text-skyblue">
-                                <PiShoppingCart size={20} />
-                                <span>1</span>
-                            </button>
+                            <Link href="/cart" className="relative">
+                                <PiShoppingCart size={24} />
+                                {cartItems.length > 0 && (
+                                    <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
+                                        {cartItems.length}
+                                    </span>
+                                )}
+                            </Link>
+
                         </div>
                         {/* btn3 */}
                         <div className="">
@@ -108,21 +115,21 @@ export default function Header() {
 
                         <Link href="/price" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Pricing</Link>
                         <div className=" flex justify-center items-center text-center">
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                <NavigationMenuItem>
-                                <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                <ul className="flex flex-col w-[150px] gap-3 p-4   ">
-                                        <li><Link className="  hover:underline hover:text-darkBlue  " href={"/productPage"}>Product List Page</Link></li>
-                                        <li><Link className="  hover:underline hover:text-darkBlue  " href={"/product1"}>Product Detail</Link></li>
-                                    </ul>
-                                </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                            <NavigationMenu>
+                                <NavigationMenuList>
+                                    <NavigationMenuItem>
+                                        <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
+                                        <NavigationMenuContent>
+                                            <ul className="flex flex-col w-[150px] gap-3 p-4   ">
+                                                <li><Link className="  hover:underline hover:text-darkBlue  " href={"/productPage"}>Product List Page</Link></li>
+                                                <li><Link className="  hover:underline hover:text-darkBlue  " href={"/product1"}>Product Detail</Link></li>
+                                            </ul>
+                                        </NavigationMenuContent>
+                                    </NavigationMenuItem>
+                                </NavigationMenuList>
+                            </NavigationMenu>
                         </div>
-                       
+
 
                         <Link href="/team" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Team</Link>
 

@@ -9,8 +9,6 @@ export default function Contact() {
     return (
         <div>
             <Header />
-
-
             <div>
                 {/* Hero Page */}
                 <div className="bg-white">

@@ -11,6 +11,9 @@ const buttonVariants = cva(
       variant: {
         categoryButton:
         "bg-white border-[1px] w-[136px] h-[48px] pt-3 pb-3 pr-12 pl-12 gap-[10px]text-darkBlue font-bold text-base  flex justify-center text-center items-center",
+
+        shopButton:"rounded-[5px] h-[80px] gap-[10px] w-[221px] text-white font-bold text-2xl text-center h-[200px]  ",
+
         default:
           "bg-primary text-primary-foreground shadow hover:bg-primary/90",
         destructive:

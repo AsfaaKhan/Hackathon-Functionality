@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import {Montserrat} from "next/font/google"
 import Footer from "@/components/footer";
+import { CartProvider } from "./context/CartContext";
+
+
 const font = Montserrat({
   subsets : ['latin'],
   weight : ['100','200','300','400','500','600','700','800','900']
@@ -23,7 +26,7 @@ export default function RootLayout({
       <body
         className={font.className}
       >
-        {children}
+        <CartProvider> {children}</CartProvider>
         
       <Footer/>
       </body>
