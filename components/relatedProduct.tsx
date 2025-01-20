@@ -28,7 +28,6 @@ const RelatedProducts = () => {
     }, [])
 
 
-
     return (
         <div>
             <div className="container flex flex-col mt-20 mb-20 ">
