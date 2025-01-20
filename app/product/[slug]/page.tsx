@@ -52,9 +52,9 @@ export default function ProductDetailPage({ params }: Props) {
 
 
     if (!product) {
-        return <div className="container   m-10 ">
+        return <div className="container  ">
             <Header />
-            <h1 className=" h-screen flex flex-col  justify-center items-center font-bold text-8xl ">Product Not Found</h1>
+            <h1 className=" h-screen flex flex-col  justify-center items-center font-bold text-4xl ">Product Not Found</h1>
             <Footer />
         </div>;
     }
