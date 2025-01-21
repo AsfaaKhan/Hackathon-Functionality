@@ -13,14 +13,11 @@ import {
     BreadcrumbSeparator,
 
 } from "@/components/ui/breadcrumb"
-import Header from "@/components/header"
 import Image from "next/image"
 export default function Price() {
     return (
         <div>
 
-            {/* Header */}
-            <Header />
 
             <div className="pt-[80px] pb-[80px] gap-[96px]">
                 <div className="container  gap-[36px1]

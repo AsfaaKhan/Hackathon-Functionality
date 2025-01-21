@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="container  bg-dullWhite">
                 <div className=" flex justify-center items-center flex-col gap-3  sm:flex-row sm:justify-between md:flex-row md:justify-between pt-10 pb-10 2xl:m-4 ">
                     <div className="font-bold text-2xl text-darkBlue ">
-                        <h3>Bandage</h3>
+                        <h3>CozyWood Creations</h3>
                     </div>
                     <div className="flex gap-[20px] text-skyblue">
                         <FaFacebook size={24} />
@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
 
             {/* 2nd Row */}
-            <div className="container grid  md:grid-cols-3 xl:grid-cols-5 justify-center items-center gap-[15px] pt-[50px] pb-[50px] ">
+            <div className="container grid sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-5 justify-center items-center gap-[15px] pt-[50px] pb-[50px] ">
 
                 {/* 1st column */}
 
@@ -71,16 +71,13 @@ export default function Footer() {
                 {/* 5th Column */}
                 <div className=" flex flex-col gap-5 font-bold">
                     <h1 className="text-base text-darkBlue">Get In Touch</h1>
-                    <div className=" rounded-[5px] w-[318px] flex flex-col md:flex-row  ">
-                        <input type="email" placeholder="Your Email" className="bg-[#E6E6E6] w-[180px]  h-[58px] text-center " />
-                        <button className="bg-skyblue text-white h-[58px] lg:w-[115px] border-[1px] rounded-[5px] ">Subscribe
+                    <div className=" rounded-[5px] w-[318px] flex flex-col ">
+                        <input type="email" placeholder="Your Email" className="bg-[#E6E6E6] h-[58px]  w-auto text-center" />
+                        <button className="bg-skyblue text-white h-[58px] w-auto    border-[1px] rounded-[5px] ">Subscribe
                         </button>
                         </div>
                     <Link href={"/"} className=" text-sm leading-[24px] text-gray">Lore imp sum dolor Amit</Link>
-
                 </div>
-
-
             </div>
         </div>
     )

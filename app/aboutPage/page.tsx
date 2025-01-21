@@ -1,6 +1,4 @@
 import Image from "next/image"
-import Header from "@/components/header"
-import HeadLine2 from "@/components/headline2"
 import Button from "@/components/button"
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -9,8 +7,6 @@ export default function About() {
     return (
 
         <div>
-                <HeadLine2/>
-                <Header/>
 
             <div className="bg-white">
 

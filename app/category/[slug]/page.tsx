@@ -1,6 +1,5 @@
 import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
-import Header from "@/components/header";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -51,14 +50,8 @@ export default async function CategoryPage({ params }: Props) {
   `;
     const category = await client.fetch(query, { slug });
 
-
-
-
-
-
     return (
         <div>
-            <Header />
             {/* Road map */}
             <div className="container my-10 ">
                 <Breadcrumb>
@@ -92,7 +85,8 @@ export default async function CategoryPage({ params }: Props) {
                                     alt={product.title}
                                     width={300}
                                     height={300}
-                                    className="w-full h-48 object-cover" /></Link>
+                                    className="w-full h-48 object-cover" />
+                                    </Link>
 
                             <h2 className="text-2xl font-semibold mt-2">{product.title}</h2><p className="text-gray-700 mt-1">${product.price}</p>
                             <p className="text-lg font-semibold mt-2 line-clamp-2">{product.description}</p>

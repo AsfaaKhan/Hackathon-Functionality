@@ -1,4 +1,3 @@
-import Header from "@/components/header"
 import Image from "next/image"
 import { LuPhone } from "react-icons/lu";
 import { FiMapPin } from "react-icons/fi";
@@ -8,7 +7,6 @@ import Button from "@/components/button";
 export default function Contact() {
     return (
         <div>
-            <Header />
             <div>
                 {/* Hero Page */}
                 <div className="bg-white">

@@ -1,4 +1,3 @@
-import Header from "@/components/header"
 import TeamHeroPage from "@/components/teamheropage"
 import OurTeam from "@/components/team";
 import Button from "@/components/button";
@@ -9,9 +8,6 @@ import { FaLinkedin } from "react-icons/fa";
 export default function Team() {
     return (
         <div>
-
-            {/* Header */}
-            <Header />
 
             {/* Price Section */}
 

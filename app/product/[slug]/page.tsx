@@ -1,13 +1,9 @@
 "use client"
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import Header from "@/components/header";
 import { client } from "@/sanity/lib/client";
-import HeadLine2 from "@/components/headline2";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Slash, EyeIcon } from "lucide-react";
-import { CgShoppingCart } from "react-icons/cg";
-import { CiHeart } from "react-icons/ci";
+import { Slash } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
 import { Product } from "@/types/product";
 import { useEffect, useState } from "react";
@@ -53,7 +49,6 @@ export default function ProductDetailPage({ params }: Props) {
 
     if (!product) {
         return <div className="container  ">
-            <Header />
             <h1 className=" h-screen flex flex-col  justify-center items-center font-bold text-4xl ">Product Not Found</h1>
             <Footer />
         </div>;
@@ -61,8 +56,6 @@ export default function ProductDetailPage({ params }: Props) {
 
     return (
         <div>
-            <HeadLine2 />
-            <Header />
 
             {/* First Section */}
             <div>
@@ -84,6 +77,7 @@ export default function ProductDetailPage({ params }: Props) {
                         </Breadcrumb>
                     </div>
                 </div>
+
                 <div className="container mt-5 ">
                     <div className=" pb-12 flex gap-[30px] flex-col  md:flex-row ">
                         <div className="md:w-1/2">
@@ -136,23 +130,19 @@ export default function ProductDetailPage({ params }: Props) {
                                     </button>
                                 </div>
                                 <div className="flex justify-center items-center text-center gap-[10px]">
-                                    <div className="rounded-[44.79px] bg-white"><CiHeart size={35} /></div>
-                                    <div className=" rounded-[44.79px] bg-white">
-                                        <CgShoppingCart size={35} />
-                                    </div>
-                                    <div className=" rounded-[44.79px] bg-white">
-                                        < EyeIcon size={35} />
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div className="bg-dullWhite ">
                 <RelatedProducts />
             </div>
+
         </div>
     )
 }

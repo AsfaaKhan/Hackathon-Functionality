@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {Montserrat} from "next/font/google"
+import { Montserrat } from "next/font/google"
 import Footer from "@/components/footer";
 import { CartProvider } from "./context/CartContext";
+import Header from "@/components/header";
+import HeadLine from "@/components/headline";
+import { WishlistProvider } from "./context/wishlistContext";
 
 
 const font = Montserrat({
-  subsets : ['latin'],
-  weight : ['100','200','300','400','500','600','700','800','900']
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
 
 
@@ -26,9 +29,17 @@ export default function RootLayout({
       <body
         className={font.className}
       >
-        <CartProvider> {children}</CartProvider>
-        
-      <Footer/>
+        <HeadLine/>
+        <WishlistProvider>
+        <CartProvider>
+          <Header />
+
+          {children}
+
+        </CartProvider>
+        </WishlistProvider>
+
+        <Footer />
       </body>
     </html>
   );
