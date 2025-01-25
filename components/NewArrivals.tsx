@@ -68,7 +68,7 @@ const NewArrivals = () => {
             const isInWishlist = wishlist.some((item) => item.id === product._id);
             return (
               <div key={product._id}
-                className="flex flex-col justify-center border-[1px] rounded-md shadow-md h-[500px] w-full gap-20 hover:scale-105 transition-transform ease-out duration-700"
+                className="flex flex-col justify-center border-[1px] rounded-md shadow-md h-[600px] w-full gap-20 hover:scale-105 transition-transform ease-out duration-700"
               >
                 {/* Product Image */}
                 <div className=" flex justify-center items-center w-full h-[200px] rounded-sm">
