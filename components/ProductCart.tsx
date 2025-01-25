@@ -56,7 +56,7 @@ const ProductPage = () => {
 
   const Loading = () => {
     return (
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 ">
+      <div className=" mt-5 mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
         {[...Array(6)].map((_, index) => (
           <div key={index} className="flex flex-col items-center justify-center">
             <Skeleton height={350} width={300} className="w-full" />
@@ -69,7 +69,7 @@ const ProductPage = () => {
   const Products = () => {
     return (
       <div>
-        <div className="container flex flex-col mt-20 mb-20 ">
+       
           <div className=" mt-5 mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
             {product.map((product) => {
 
@@ -138,9 +138,8 @@ const ProductPage = () => {
             }
             )}
           </div>
-
         </div>
-      </div>
+      
     )
   }
 

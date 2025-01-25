@@ -93,7 +93,6 @@ const RelatedProducts = () => {
                                         >
                                             <CiHeart size={24} />
                                         </button>
-
                                         {/* Wishlist Button */}
                                         <button
                                             onClick={() => handleWishlistToggle(product)}
@@ -114,11 +113,9 @@ const RelatedProducts = () => {
                                             View More...
                                         </button>
                                     </Link>
-
                                 </div>
                             </div>
                         )
-
                     }
                     )}
                 </div>
