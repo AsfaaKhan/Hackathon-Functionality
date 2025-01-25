@@ -78,7 +78,7 @@ export default async function CategoryPage({ params }: Props) {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                     {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                     {category.products.map((product: IProduct) => (
-                        <div key={product.title} className="p-4 border rounded">
+                        <div key={product.title} className="p-4 border rounded hover:scale-105 transition-transform ease-out duration-700 ">
                             <Link href={`/product/${product.slug.current}`}>
                                 <Image
                                     src={urlFor(product.imageUrl).url()}

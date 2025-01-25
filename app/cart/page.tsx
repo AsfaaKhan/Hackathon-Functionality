@@ -3,6 +3,7 @@
 import { urlFor } from "@/sanity/lib/image";
 import { useCart } from "../context/CartContext";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CartPage() {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
@@ -29,8 +30,8 @@ export default function CartPage() {
                         height={100}
                       >
                       </Image>
-                      </div>
-                      <div className=" flex flex-col gap-3">
+                    </div>
+                    <div className=" flex flex-col gap-3">
                       <h2 className="text-lg font-bold">{item.title}</h2>
                       <p className="font-bold ">Price: ${item.price}</p>
                       <p className="font-bold">Quantity: {item.quantity}</p>
@@ -53,6 +54,15 @@ export default function CartPage() {
                   >
                     Remove
                   </button>
+                  <Link href={"/checkout"}>
+                    <button
+
+                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-fit"
+                    >
+                      Checkout
+                    </button>
+                  </Link>
+
                 </div>
 
 

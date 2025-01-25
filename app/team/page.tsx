@@ -1,6 +1,6 @@
 import TeamHeroPage from "@/components/teamheropage"
 import OurTeam from "@/components/team";
-import Button from "@/components/button";
+import { Button } from "@/components/ui/button";
 import { ImFacebook2 } from "react-icons/im";
 import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
@@ -41,7 +41,7 @@ export default function Team() {
                         do met sent. RELIT official consequent.</h1></div>
 
                         <div>
-                            <Button name="Try it free now" />
+                            <Button>Try it free now</Button>
                         </div>
                         <div className="flex gap-[34px] p-[10px]">
                             <ImFacebook2 size={24} className="text-[#55ACEE]"/> 

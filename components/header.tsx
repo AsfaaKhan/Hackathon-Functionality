@@ -26,11 +26,11 @@ const Header = () => {
         setNavbar(!navbar);
     }
     return (
-        <div className="container">
+        <div className=" w-full z-10 top-0 fixed  bg-dullWhite ">
             <nav >
-                <div className=" h-[58px]  flex items-center text-center justify-between ">
+                <div className=" container h-[58px]  flex items-center text-center justify-between  ">
                     {/*             LOGO                    */}
-                    <div className=" text-2xl font-bold text-darkBlue bg-[#ffffff]">
+                    <div className=" text-xl sm:text-2xl font-bold text-darkBlue ">
                         <h3>CozyWood Creations</h3>
                     </div>
 
@@ -39,7 +39,7 @@ const Header = () => {
                         <Link className="  hover:underline hover:text-darkBlue  " href="/">Home</Link>
                         <Link className="  hover:underline hover:text-darkBlue  " href="/productPage">Shop</Link>
                         <Link className="  hover:underline hover:text-darkBlue  " href={"/aboutPage"}>About</Link>
-                        <Link className="  hover:underline hover:text-darkBlue  " href="/team">Team</Link>
+                        {/* <Link className="  hover:underline hover:text-darkBlue  " href="/team">Team</Link> */}
                         <Link className=" hover:underline hover:text-darkBlue " href="/contactPage"> Contact</Link>
                         <Link className=" hover:underline hover:text-darkBlue  " href="/price"> Price</Link>
                     </div>
@@ -47,7 +47,6 @@ const Header = () => {
 
                     {/*         Navbar Icons Anths        */}
                     <div className="flex  items-center ">
-
                         <div className=" ">
                             <button className=" hidden text-skyblue lg:flex justify-center text-center items-center">
                                 <FaRegUser size={15} />
@@ -93,7 +92,7 @@ const Header = () => {
                         <Link href="/aboutPage" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>About</Link>
                         <Link href="/productPage" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Shop</Link>
                         <Link href="/price" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Pricing</Link>
-                        <Link href="/team" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Team</Link>
+                        {/* <Link href="/team" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Team</Link> */}
                         <Link href="/contactPage" className="block text-black py-2  hover:underline hover:text-darkBlue " onClick={handleNavbar}>Contact</Link>
                     </div>
                 )}

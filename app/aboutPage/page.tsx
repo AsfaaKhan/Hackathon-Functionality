@@ -1,8 +1,8 @@
 import Image from "next/image"
-import Button from "@/components/button"
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { CiTwitter } from "react-icons/ci";
+import { Button } from "@/components/ui/button";
 export default function About() {
     return (
 
@@ -22,7 +22,7 @@ export default function About() {
                             but things on a small scale</h1></div>
 
                         <div>
-                            <Button name="Get Quote Now" />
+                            <Button variant={"link"} >Get Quote Now</Button>
                         </div>
 
                     </div>
@@ -254,7 +254,7 @@ export default function About() {
                         <div className="font-normal text-xl leading-[30px] sm:w-[341px] " style={{ letterSpacing: "0.2px" }}> <h1>The gradual accumulation of information about atomic and small-scale behavior during the first quarter of the 20th </h1></div>
 
                         <div>
-                            <Button name="Get Quote Now" />
+                            <Button >Get Quote Now </Button>
                         </div>
 
                     </div>
