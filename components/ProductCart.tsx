@@ -70,7 +70,7 @@ const ProductPage = () => {
     return (
       <div>
         <div className="container flex flex-col mt-20 mb-20 ">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-[48px]  ">
+          <div className=" mt-5 mb-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
             {product.map((product) => {
 
               const isInWishlist = wishlist.some((item) => item.id === product._id);
@@ -81,12 +81,14 @@ const ProductPage = () => {
                   {/* Product Image */}
                   <div className=" flex justify-center items-center w-full h-[200px] rounded-sm">
                     <Link href={`/product/${product.slug.current}`}>
-                      <Image
-                        src={urlFor(product.imageUrl).url()}
-                        alt={product.title}
-                        width={200}
-                        height={200}
-                      />
+                      <div className=" flex justify-center items-center w-full h-[200px] rounded-sm">
+                        <Image
+                          src={urlFor(product.imageUrl).url()}
+                          alt={product.title}
+                          width={200}
+                          height={200}
+                        />
+                      </div>
                     </Link>
                   </div>
 
@@ -136,6 +138,7 @@ const ProductPage = () => {
             }
             )}
           </div>
+
         </div>
       </div>
     )
