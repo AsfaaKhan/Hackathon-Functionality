@@ -4,14 +4,16 @@ import { urlFor } from "@/sanity/lib/image";
 import { useWishlist } from "../context/wishlistContext";
 import Image from "next/image"
 import { useCart } from "../context/CartContext";
+import Swal from "sweetalert2";
 
 
 // Define WishlistItem type (if not already defined)
-type WishlistItem = {
+interface WishlistItem {
   id: string;
   title: string;
   price: number;
   imageUrl: string;
+  inventory:number,
 };
 
 export default function WishlistPage() {
@@ -25,13 +27,33 @@ export default function WishlistPage() {
       title: item.title,
       price: item.price,
       imageUrl: item.imageUrl,
-      quantity: 1, // Default quantity
-      description: "", // Optional
-      slug: { current: "" }, // Optional
+      quantity: 1, 
+      description: "", 
+      slug: { current: "" },
+      inventory : item.inventory
+      
+
     };
     addToCart(product); // Add item to the cart
-    alert(`${item.title} added to cart!`);
-  };
+Swal.fire({
+            title: `Do you want to add ${product.title} in your cart?`,
+            showDenyButton: true,
+            showLoaderOnConfirm: true,
+            confirmButtonText: "Yes",
+            denyButtonText: `No`,
+
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: `${product.title} added successfully`,
+                    icon: "success",
+                })
+            }
+            else if (result.isDenied) {
+                Swal.fire(`${product.title} is not Add In Your Cart`);
+            }
+        });  };
   
   return (
     <div className="containe">
@@ -58,6 +80,7 @@ export default function WishlistPage() {
                   />
                   <h2 className="font-bold text-lg">{item.title}</h2>
                   <p className="text-gray-600">${item.price}</p>
+                  <p>{item.inventory}</p>
                   <div className="flex gap-4 ">
                     <button
                       onClick={() => removeFromWishlist(item.id)}
@@ -67,7 +90,7 @@ export default function WishlistPage() {
                     </button>
 
                     <button
-                      onClick={() => handleAddToCart(item)}
+                     onClick={() => handleAddToCart(item)}
                       className="mt-2 font-bold   text-white px-4 py-2 rounded  bg-yellow-500 hover:bg-yellow-400"
                     >
                       Add to Cart

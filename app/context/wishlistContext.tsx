@@ -9,6 +9,7 @@ interface WishlistItem {
     title: string;
     price: number;
     imageUrl: string;
+    inventory : number;
 }
 
 interface WishlistContextType {

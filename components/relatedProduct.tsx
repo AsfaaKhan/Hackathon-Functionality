@@ -63,6 +63,7 @@ const RelatedProducts = () => {
                 title: product.title,
                 price: product.price,
                 imageUrl: product.imageUrl,
+                inventory : product.inventory
             });
             Swal.fire(
                 {

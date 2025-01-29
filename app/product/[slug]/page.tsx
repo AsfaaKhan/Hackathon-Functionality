@@ -45,7 +45,6 @@ export default function ProductDetailPage({ params }: Props) {
     const handleAddToCart = (product: Product) => {
         addToCart(product);
         Swal.fire({
-
             title: `Do you want to add ${product.title} in your cart?`,
             showDenyButton: true,
             showLoaderOnConfirm: true,
@@ -87,6 +86,7 @@ export default function ProductDetailPage({ params }: Props) {
                 title: product.title,
                 price: product.price,
                 imageUrl: product.imageUrl,
+                inventory:product.inventory
             });
             Swal.fire(
                 {
