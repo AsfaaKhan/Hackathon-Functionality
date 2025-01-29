@@ -13,8 +13,11 @@ import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 
 
+
 // Inerface
 interface IProduct {
+    quantity: number,
+    inventory: number,
     title: string,
     price: number,
     tags: string[],
@@ -22,7 +25,7 @@ interface IProduct {
     description: string,
     isNew: boolean,
     imageUrl: string,
-    _id: number,
+    _id: string,
     slug: { current: string }
 }
 
@@ -34,9 +37,12 @@ interface Props {
 
 
 export default async function CategoryPage({ params }: Props) {
+
+
     const { slug } = params;
 
     // category  query
+   
     const query = `*[_type == "category" && slug.current == $slug][0] {
       name,
       "products": *[_type == "product" && references(^._id)]
@@ -48,7 +54,9 @@ export default async function CategoryPage({ params }: Props) {
       }
     }
   `;
-    const category = await client.fetch(query, { slug });
+
+    const category = await client.fetch(query, { slug })
+
 
     return (
         <div>
@@ -86,7 +94,7 @@ export default async function CategoryPage({ params }: Props) {
                                     width={300}
                                     height={300}
                                     className="w-full h-48 object-cover" />
-                                    </Link>
+                            </Link>
 
                             <h2 className="text-2xl font-semibold mt-2">{product.title}</h2><p className="text-gray-700 mt-1">${product.price}</p>
                             <p className="text-lg font-semibold mt-2 line-clamp-2">{product.description}</p>
@@ -98,6 +106,24 @@ export default async function CategoryPage({ params }: Props) {
                                     View
                                 </button>
                             </Link>
+                            {/* Add to Cart Button */}
+                            {/* <button
+                                onClick={() => handleAddToCart(product)}
+                                className="mt-2 font-bold   text-white px-4 py-2 rounded  bg-yellow-500 hover:bg-yellow-400"
+                            >
+                                <CiHeart size={24} />
+                            </button> */}
+
+                            {/* Wishlist Button */}
+                            {/* <button
+                                onClick={() => handleWishlistToggle(product)}
+                                className={`mt-2 px-4 py-2 rounded ${isInWishlist
+                                    ? "bg-red-500 text-black hover:bg-red-600"
+                                    : "bg-yellow-500 hover:bg-yellow-400 text-white hover:bg-gray-600"
+                                    }`}
+                            >
+                                {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+                            </button>   */}
 
                         </div>
                     ))}
@@ -105,3 +131,5 @@ export default async function CategoryPage({ params }: Props) {
             </div>
         </div>)
 }
+
+

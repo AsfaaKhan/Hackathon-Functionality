@@ -30,8 +30,11 @@ const Header = () => {
             <nav >
                 <div className=" container h-[58px]  flex items-center text-center justify-between  ">
                     {/*             LOGO                    */}
-                    <div className=" text-xl sm:text-2xl font-bold text-darkBlue ">
-                        <h3>CozyWood Creations</h3>
+                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-darkBlue hover:text-yellow-500 ">
+                        <Link href={"/"}>
+                         <h3>CozyWood Creations</h3>
+                         </Link>
+
                     </div>
 
                     {/*             NAVBAR ITEMS                  */}
@@ -58,7 +61,7 @@ const Header = () => {
                         <div className=" ">
                             <Link href="/cart" className="relative">
                                 <PiShoppingCart size={24} />
-                                {cartItems.length > 0 && (
+                                {cartItems.length >= 0 && (
                                     <span className="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">
                                         {cartItems.length}
                                     </span>
@@ -70,8 +73,8 @@ const Header = () => {
                         <div className="">
                             <Link href={"/wishlist"} className="relative">
                                 <CiHeart size={24} />
-                                {wishlist.length > 0 && (
-                                    <span className="absolute top-0 right-0 bg-red-500 text-white font-bold rounded-full text-sm w-5 h-5 flex items-center justify-center">
+                                {wishlist.length >= 0 && (
+                                    <span className="absolute top-0 right-0 bg-red-500 text-white  rounded-full text-xs w-4 h-4 flex items-center justify-center">
                                         {wishlist.length}
                                     </span>
                                 )}

@@ -55,6 +55,11 @@ export const product = defineType({
             title:"New Badge",
         },
         {
+            name:"inventory",
+            type:"number",
+            title: "Inventory"
+        },
+        {
             name: 'category',
             title: 'Category',
             type: 'reference',

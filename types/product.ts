@@ -8,6 +8,7 @@ export interface Product {
   description: string;
   isNew?: boolean;
   imageUrl: string;
+  inventory:number,
   slug: {
     current: string;
   };

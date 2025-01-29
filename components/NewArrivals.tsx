@@ -10,6 +10,7 @@ import { sixProducts } from "@/sanity/lib/quries";
 import { useState, useEffect } from "react";
 import { useWishlist } from "@/app/context/wishlistContext";
 import { CiHeart } from "react-icons/ci";
+import Swal from "sweetalert2"
 
 
 const NewArrivals = () => {
@@ -20,13 +21,42 @@ const NewArrivals = () => {
 
   const handleAddToCart = (product: Product) => {
     addToCart(product);
-    alert(`${product.title} added to cart!`);
+    Swal.fire({
+
+      title: `Do you want to add ${product.title} in your cart?`,
+      showDenyButton: true,
+      showLoaderOnConfirm: true,
+      confirmButtonText: "Yes",
+      denyButtonText: `No`,
+
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: `${product.title} added successfully`,
+          icon: "success",
+        })
+      }
+      else if (result.isDenied) {
+        Swal.fire(`${product.title} is not Add In Your Cart`);
+      }
+    });
   };
 
   const handleWishlistToggle = (product: Product) => {
     if (wishlist.some((item) => item.id === product._id)) {
       removeFromWishlist(product._id);
-      alert(`${product.title} removed from wishlist!`);
+      Swal.fire(
+        {
+          position: "top",
+          icon: "error",
+          title: `${product.title} removed from your wishlist!`,
+          showConfirmButton: true,
+          customClass: {
+            icon: 'rotate-x',
+          },
+        }
+      )
     } else {
       addToWishlist({
         id: product._id,
@@ -34,7 +64,15 @@ const NewArrivals = () => {
         price: product.price,
         imageUrl: product.imageUrl,
       });
-      alert(`${product.title} added to wishlist!`);
+      Swal.fire(
+        {
+          position: "top",
+          icon: "success",
+          title: `${product.title} Added to your wishlist!`,
+          showConfirmButton: true,
+         
+        }
+      )
     }
   };
 

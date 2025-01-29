@@ -1,13 +1,12 @@
 
-
 import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google"
 import Footer from "@/components/footer";
-import { CartProvider } from "./context/CartContext";
+import { CartProvider } from "../context/CartContext";
 import Header from "@/components/header";
 import HeadLine from "@/components/headline";
-import { WishlistProvider } from "./context/wishlistContext";
+import { WishlistProvider } from "../context/wishlistContext";
 
 const font = Montserrat({
   subsets: ['latin'],
