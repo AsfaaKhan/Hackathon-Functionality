@@ -21,61 +21,92 @@ const RelatedProducts = () => {
 
     const handleAddToCart = (product: Product) => {
         addToCart(product);
-        Swal.fire({
+        // Swal.fire({
+        //     title: `Do you want to add ${product.title} in your cart?`,
+        //     showDenyButton: true,
+        //     showLoaderOnConfirm: false,
+        //     confirmButtonText: "Yes",
+        //     denyButtonText: `No`,
 
-            title: `Do you want to add ${product.title} in your cart?`,
-            showDenyButton: true,
-            showLoaderOnConfirm: true,
-            confirmButtonText: "Yes",
-            denyButtonText: `No`,
+        // }).then((result) => {
+        //     /* Read more about isConfirmed, isDenied below */
+        //     if (result.isConfirmed) {
+        //         Swal.fire({
+        //             title: `${product.title} added successfully`,
+        //             icon: "success",
+        //         })
+        //     }
+        //     else if (result.isDenied) {
+        //         Swal.fire(`${product.title} is not Add In Your Cart`);
+        //     }
+        // });
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            iconColor: 'green',
+            customClass: {
+                popup: 'colored',
+            },
+            showConfirmButton: false,
+            timer: 1500,
+            timerProgressBar: false,
 
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                Swal.fire({
-                    title: `${product.title} added successfully`,
-                    icon: "success",
-                })
-            }
-            else if (result.isDenied) {
-                Swal.fire(`${product.title} is not Add In Your Cart`);
-            }
         });
+        (async () => {
+            await Toast.fire({
+                icon: 'success',
+                title: 'Add to cart Successfully',
+            })
+        })()
     };
 
     const handleWishlistToggle = (product: Product) => {
         if (wishlist.some((item) => item.id === product._id)) {
             removeFromWishlist(product._id);
-            Swal.fire(
-                {
-                    position: "top",
-                    icon: "error",
-                    title: `${product.title} removed from your wishlist!`,
-                    showConfirmButton: true,
-                    customClass: {
-                        icon: 'rotate-y',
-                    },
-                }
-            )
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-end',
+                iconColor: 'red',
+                customClass: {
+                    popup: 'colored',
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+
+            }); (async () => {
+                await Toast.fire({
+                    icon: 'error',
+                    title: 'Remove From Wishlist',
+                })
+            })()
         } else {
             addToWishlist({
                 id: product._id,
                 title: product.title,
                 price: product.price,
                 imageUrl: product.imageUrl,
-                inventory : product.inventory
+                inventory: product.inventory
+            })
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-end',
+                iconColor: 'green',
+                customClass: {
+                    popup: 'colored',
+                },
+                showConfirmButton: false,
+                timer: 1500,
+                timerProgressBar: false,
+
             });
-            Swal.fire(
-                {
-                    position: "top",
-                    icon: "success",
-                    title: `${product.title} Added to your wishlist!`,
-                    showConfirmButton: true,
-                    customClass: {
-                        icon: 'rotate-x',
-                    },
-                }
-            )
+            (async () => {
+                await Toast.fire({
+                    icon: 'success',
+                    title: 'Add to wishlist Successfully',
+                })
+            })()
+
         }
     };
 

@@ -4,9 +4,31 @@ import { urlFor } from "@/sanity/lib/image";
 import { useCart } from "../context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export default function CartPage() {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
+
+  const handleProceed = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'bottom-end',
+      iconColor: 'green',
+      customClass: {
+        popup: 'colored',
+      },
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+
+    });
+    (async () => {
+      await Toast.fire({
+        icon: 'success',
+        title: 'Proccessing',
+      })
+    })()
+  }
 
   return (
     <div className="container">
@@ -18,6 +40,7 @@ export default function CartPage() {
               <p className="container font-semibold text-red-600 flex justify-center items-center text-2xl mt-10 ">Your Cart is empty.</p>
               <p className="container flex justify-center items-center text-xl font-bold text-gray">Shop Now..</p>
             </div>
+
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
               {cartItems.map((item) => (
@@ -54,14 +77,15 @@ export default function CartPage() {
                   >
                     Remove
                   </button>
-                  <Link href={"/checkout"}>
-                    <button
+                  <Link href="/checkout"><button
+                    onClick={(handleProceed)}
 
-                      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-fit"
-                    >
-                      Checkout
-                    </button>
-                  </Link>
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 w-fit"
+                  >
+                    Checkout
+                  </button></Link>
+                  
+
 
                 </div>
 

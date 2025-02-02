@@ -34,7 +34,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-
   const increaseQuantity = (id: string) => {
     setCart((prevCart) =>
       prevCart.map((cartItem) =>
