@@ -1,5 +1,4 @@
 
-
 import type { Metadata } from "next";
 import "./globals.css";
 import { Montserrat } from "next/font/google"
@@ -8,6 +7,7 @@ import { CartProvider } from "./context/CartContext";
 import Header from "@/components/header";
 import HeadLine from "@/components/headline";
 import { WishlistProvider } from "./context/wishlistContext";
+
 
 const font = Montserrat({
   subsets: ['latin'],
@@ -31,6 +31,7 @@ export default function RootLayout({
       <body
         className={font.className}
       >
+   
         <HeadLine />
         <WishlistProvider>
           <CartProvider>
@@ -39,9 +40,14 @@ export default function RootLayout({
           </CartProvider>
         </WishlistProvider>
         <Footer />
-
+        
       </body>
     </html>
 
   );
 }
+
+
+
+
+
