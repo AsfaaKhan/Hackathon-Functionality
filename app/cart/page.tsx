@@ -5,6 +5,16 @@ import { useCart } from "../context/CartContext";
 import Image from "next/image";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+
+} from "@/components/ui/breadcrumb"
+import { Slash } from "lucide-react";
+
 
 export default function CartPage() {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
@@ -32,6 +42,25 @@ export default function CartPage() {
 
   return (
     <div className="container">
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator>
+            <Slash />
+          </BreadcrumbSeparator>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/productPage" className="text-black">Shop</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator>
+            <Slash />
+          </BreadcrumbSeparator>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/cart" className="text-black">zCart</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
       <div className="container  h-1/2 p-4">
         <h1 className=" container text-2xl font-bold text-darkBlue  mb-4 mt-20">Your Cart</h1>
         <div className="container  mx-auto  p-5 ">

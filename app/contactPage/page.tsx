@@ -2,7 +2,6 @@ import Image from "next/image"
 import { LuPhone } from "react-icons/lu";
 import { FiMapPin } from "react-icons/fi";
 import { TfiEmail } from "react-icons/tfi";
-import SubmitButton from "@/components/submitbtn";
 import { Button } from "@/components/ui/button";
 export default function Contact() {
     return (
@@ -37,10 +36,7 @@ export default function Contact() {
                                 width={510}
                                 height={684}></Image>
                         </div>
-
                     </div>
-
-
                 </div>
 
                 {/* Contact */}
@@ -60,7 +56,7 @@ export default function Contact() {
                             < p className="text-darkBlue font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className="text-darkBlue font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <Button>Submit Request</Button>
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
 
                         <div className="w-[327px ] h-[333px] bg-darkBlue flex flex-col justify-center text-center items-center  gap-[15px] pt-[50px] pb-[50px] pr-[40px] pl-[40px] " >
@@ -68,21 +64,16 @@ export default function Contact() {
                             < p className=" text-white  font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className=" text-white  font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <SubmitButton name="Submit Request" />
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
                         <div className="w-[327px ] h-[333px] bg-white flex flex-col justify-center text-center items-center  gap-[15px] pt-[50px] pb-[50px] pr-[40px] pl-[40px] " >
                             <TfiEmail size={72} className="text-skyblue" />
                             < p className="text-darkBlue font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className="text-darkBlue font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <Button>Submit Request</Button>
-
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
-
                     </div>
-
-
-
                 </div>
 
                 {/* End */}
@@ -94,7 +85,7 @@ export default function Contact() {
                         <div className="flex flex-col justify-center items-center text-center gap-[10px]">
                             <p className="font-bold text-base  text-darkBlue" style={{ "letterSpacing": "0.1px" }}>{`WE Can't WAIT TO MEET YOU `}</p>
                             <h3 className="font-bold text-[58px] leading-[80px] text-darkBlue" style={{ "letterSpacing": "0.2px" }}>{`Let’s Talk`}</h3>
-                            <Button>Try it free now</Button>
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
                     </div>
                 </div>

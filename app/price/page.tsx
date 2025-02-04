@@ -1,5 +1,4 @@
 import { Slash } from "lucide-react"
-import SubmitButton from "@/components/submitbtn"
 import { LuPhone } from "react-icons/lu"
 import { FiMapPin } from "react-icons/fi"
 import { TfiEmail } from "react-icons/tfi"
@@ -14,11 +13,10 @@ import {
 
 } from "@/components/ui/breadcrumb"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 export default function Price() {
     return (
         <div>
-
-
             <div className="pt-[80px] pb-[80px] gap-[96px]">
                 <div className="container  gap-[36px1]
                     ">
@@ -41,7 +39,6 @@ export default function Price() {
                             </BreadcrumbList>
                         </Breadcrumb>
 
-
                     </div>
 
 
@@ -56,10 +53,6 @@ export default function Price() {
                             height={44}>
 
                         </Image>
-
-
-
-
                     </div>
                 </div>
 
@@ -71,7 +64,7 @@ export default function Price() {
                             < p className="text-darkBlue font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className="text-darkBlue font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <SubmitButton name="Submit Request" />
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
 
                         <div className="w-[327px ] h-[333px] bg-darkBlue flex flex-col justify-center text-center items-center  gap-[15px] pt-[50px] pb-[50px] pr-[40px] pl-[40px] " >
@@ -79,16 +72,15 @@ export default function Price() {
                             < p className=" text-white  font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className=" text-white  font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <SubmitButton name="Submit Request" />
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
                         <div className="w-[327px ] h-[333px] bg-white flex flex-col justify-center text-center items-center  gap-[15px] pt-[50px] pb-[50px] pr-[40px] pl-[40px] " >
                             <TfiEmail size={72} className="text-skyblue" />
                             < p className="text-darkBlue font-bold text-sm leading-[24px] " style={{ letterSpacing: "0.2" }}>{`georgia.young@example.com `} <br />
                                 {` georgia.young@ple.com`}</p>
                             <p className="text-darkBlue font-bold text-base leading-[24px] " style={{ letterSpacing: "0.1" }}>Get Support</p>
-                            <SubmitButton name="Submit Request" />
+                            <Button variant={"submitButton"}>Submit Request</Button>
                         </div>
-
                     </div>
                 </div>
 
@@ -128,10 +120,8 @@ export default function Price() {
                                         width={151}
                                         height={42}></Image>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -236,8 +226,6 @@ export default function Price() {
                         </p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     )
